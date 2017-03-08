@@ -2,6 +2,15 @@
     "app_title": {
         "message": "jnj"
     },
+    "format_date": {
+        "message": "MM/DD/YYYY"
+    },
+    "format_time": {
+        "message": "HH:mm"
+    },
+    "format_date_time": {
+        "message": "MM/DD/YYYY HH:mm"
+    },
     "label_status_open": {
         "message": "Open"
     },
