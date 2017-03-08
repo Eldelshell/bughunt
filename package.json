@@ -1,0 +1,24 @@
+{
+  "name": "jnj",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node ./bin/www",
+    "debug": "NODE_ENV=\"development\" nodemon --harmony-async-await --debug-brk ./bin/www",
+    "nodemon": "NODE_ENV=\"development\" nodemon ./bin/www"
+  },
+  "dependencies": {
+    "accept-language-parser": "^1.3.0",
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "express": "~4.14.1",
+    "handlebars-paginate": "^0.1.0",
+    "hbs": "~4.0.1",
+    "lowdb": "^0.15.5",
+    "morgan": "~1.7.0",
+    "node-sass-middleware": "0.9.8",
+    "remarkable": "^1.7.1",
+    "serve-favicon": "~2.3.2",
+    "winston": "^2.3.1"
+  }
+}

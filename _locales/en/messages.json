@@ -1,0 +1,53 @@
+{
+    "app_title": {
+        "message": "jnj"
+    },
+    "label_status_open": {
+        "message": "Open"
+    },
+    "label_status_closed": {
+        "message": "Closed"
+    },
+    "label_status_duplicate": {
+        "message": "Duplicate"
+    },
+    "label_status_migrated": {
+        "message": "Migrated"
+    },
+    "label_status_progress": {
+        "message": "In Progress"
+    },
+    "class_type_idea": {
+        "message": "fa-info-circle"
+    },
+    "class_type_bug": {
+        "message": "fa-bug"
+    },
+    "class_type_problem": {
+        "message": "fa-question-circle"
+    },
+    "class_type_improvement": {
+        "message": "fa-plus-circle"
+    },
+    "class_status_open": {
+        "message": "info"
+    },
+    "class_status_closed": {
+        "message": "danger"
+    },
+    "class_status_duplicate": {
+        "message": "danger"
+    },
+    "class_status_progress": {
+        "message": "primary"
+    },
+    "class_status_migrated": {
+        "message": "success"
+    },
+    "label_email": {
+        "message": "Email Address"
+    },
+    "xxxx": {
+        "message": "xxxx"
+    }
+}

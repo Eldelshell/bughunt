@@ -1,0 +1,7 @@
+<div class="list-group">
+    <a href="/ticket/{{id}}" class="list-group-item">
+        <span class="badge btn-info search-badge" data-search="/dashboard?search=is:{{status}} is:{{type}}">$$label_status_{{status}}$$&nbsp;&nbsp;<i class="fa $$class_type_{{type}}$$"></i></span>
+        <h4 class="list-group-item-heading">{{truncate title 50}}</h4>
+        <p class="list-group-item-text italic">{{truncate description 30}}</p>
+    </a>
+</div>

@@ -1,0 +1,84 @@
+<div class="panel panel-default" style="margin-bottom: 0">
+    <div class="panel-heading">
+        <form class="form-inline" method="GET" action="/dashboard">
+            <div class="form-group">
+                <label class="sr-only" for="status">$$label_search$$</label>
+                <input
+                    type="search"
+                    name="search"
+                    placeholder="$$label_search_placeholder$$"
+                    class="form-control input-sm"
+                    value="{{search}}"/>
+            </div>
+
+            <input class="btn btn-sm btn-primary" type="submit" value="$$label_search$$">
+            <a href="/dashboard" class="btn btn-sm btn-default">$$label_clear$$</a>
+        </form>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <span class="label label-success clickable" data-search="/dashboard?search=is:open">{{open}} $$label_status_open$$</span>
+            <span class="label label-warning clickable" data-search="/dashboard?search=is:progress">{{progress}} $$label_status_progress$$</span>
+            <span class="label label-default clickable" data-search="/dashboard?search=is:closed">{{closed}} $$label_status_closed$$</span>
+        </div>
+    </div>
+    <div class="panel-body">
+        {{#if tickets.length}}
+            <div class="tickets-table">
+                {{#each tickets}}
+                    {{>listItem this}}
+                {{/each}}
+            </div>
+        {{else}}
+            <h1>$$label_no_tickets$$</h1>
+        {{/if}}
+    </div>
+    {{#if pagination}}
+        {{#if pagination.show}}
+            <div class="panel-footer">
+                <ul class="pagination">
+                    {{#paginate pagination type="first"}}
+                        <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">First</a></li>
+                    {{/paginate}}
+                    {{#paginate pagination type="previous"}}
+                        <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Prev</a></li>
+                    {{/paginate}}
+                    {{#paginate pagination type="middle" limit="7"}}
+                        <li {{#if active}}class="active"{{/if}}><a class="pagination-link" href="?page={{n}}">{{n}}</a></li>
+                    {{/paginate}}
+                    {{#paginate pagination type="next"}}
+                        <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Next</a></li>
+                    {{/paginate}}
+                    {{#paginate pagination type="last"}}
+                        <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Last</a></li>
+                    {{/paginate}}
+                </ul>
+            </div>
+        {{/if}}
+    {{/if}}
+</div>
+
+
+
+<script>
+
+    window.addEventListener('load', function(){
+        // Override the click event for the pagination buttons so we can append the filters
+        document.querySelectorAll('.pagination-link').forEach(function(btn){
+            btn.addEventListener('click', function(evt){
+                evt.preventDefault();
+                window.location = evt.target.href + '&search=' + '{{search}}';
+            });
+        });
+
+        document.querySelectorAll('.clickable, .search-badge').forEach(function(badge){
+            badge.addEventListener('click', function(evt){
+                evt.preventDefault();
+                window.location = evt.target.getAttribute('data-search');
+            });
+        });
+    });
+
+</script>
