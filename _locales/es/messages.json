@@ -1,0 +1,62 @@
+{
+    "app_title": {
+        "message": "jnj"
+    },
+    "format_date": {
+        "message": "DD/MM/YYYY"
+    },
+    "format_time": {
+        "message": "HH:mm"
+    },
+    "format_date_time": {
+        "message": "DD/MM/YYYY HH:mm"
+    },
+    "label_status_open": {
+        "message": "Abierto"
+    },
+    "label_status_closed": {
+        "message": "Cerrado"
+    },
+    "label_status_duplicate": {
+        "message": "Duplicado"
+    },
+    "label_status_migrated": {
+        "message": "Migrado"
+    },
+    "label_status_progress": {
+        "message": "En Progreso"
+    },
+    "class_type_idea": {
+        "message": "fa-info-circle"
+    },
+    "class_type_bug": {
+        "message": "fa-bug"
+    },
+    "class_type_problem": {
+        "message": "fa-question-circle"
+    },
+    "class_type_improvement": {
+        "message": "fa-plus-circle"
+    },
+    "class_status_open": {
+        "message": "info"
+    },
+    "class_status_closed": {
+        "message": "danger"
+    },
+    "class_status_duplicate": {
+        "message": "danger"
+    },
+    "class_status_progress": {
+        "message": "primary"
+    },
+    "class_status_migrated": {
+        "message": "success"
+    },
+    "label_email": {
+        "message": "Correo Electrónico"
+    },
+    "xxxx": {
+        "message": "xxxx"
+    }
+}
