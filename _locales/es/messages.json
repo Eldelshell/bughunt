@@ -11,32 +11,35 @@
     "format_date_time": {
         "message": "DD/MM/YYYY HH:mm"
     },
-    "label_status_open": {
-        "message": "Abierto"
+    "class_level_critical": {
+        "message": "warning"
     },
-    "label_status_closed": {
-        "message": "Cerrado"
+    "class_level_blocker": {
+        "message": "danger"
     },
-    "label_status_duplicate": {
-        "message": "Duplicado"
+    "class_level_low": {
+        "message": "success"
     },
-    "label_status_migrated": {
-        "message": "Migrado"
+    "icon_level_critical": {
+        "message": "fa-arrow-circle-up"
     },
-    "label_status_progress": {
-        "message": "En Progreso"
+    "icon_level_blocker": {
+        "message": "fa-bomb"
+    },
+    "icon_level_low": {
+        "message": "fa-arrow-circle-down"
     },
     "class_type_idea": {
-        "message": "fa-info-circle"
+        "message": "info"
     },
     "class_type_bug": {
-        "message": "fa-bug"
+        "message": "danger"
     },
     "class_type_problem": {
-        "message": "fa-question-circle"
+        "message": "warning"
     },
     "class_type_improvement": {
-        "message": "fa-plus-circle"
+        "message": "success"
     },
     "class_status_open": {
         "message": "info"
@@ -53,8 +56,62 @@
     "class_status_migrated": {
         "message": "success"
     },
+    "icon_type_idea": {
+        "message": "fa-info-circle"
+    },
+    "icon_type_bug": {
+        "message": "fa-bug"
+    },
+    "icon_type_problem": {
+        "message": "fa-question-circle"
+    },
+    "icon_type_improvement": {
+        "message": "fa-plus-circle"
+    },
+    "label_status_open": {
+        "message": "Abierto"
+    },
+    "label_status_closed": {
+        "message": "Cerrado"
+    },
+    "label_status_duplicate": {
+        "message": "Duplicado"
+    },
+    "label_status_migrated": {
+        "message": "Migrado"
+    },
+    "label_status_progress": {
+        "message": "En Progreso"
+    },
     "label_email": {
         "message": "Correo Electrónico"
+    },
+    "label_public": {
+        "message": "Público"
+    },
+    "label_private": {
+        "message": "Privado"
+    },
+    "label_critical": {
+        "message": "Alto"
+    },
+    "label_blocker": {
+        "message": "Bloqueante"
+    },
+    "label_low": {
+        "message": "Bajo"
+    },
+    "label_type_bug": {
+        "message": "Bug"
+    },
+    "label_type_improvement": {
+        "message": "Mejora"
+    },
+    "label_type_problem": {
+        "message": "Problema"
+    },
+    "label_type_idea": {
+        "message": "Idea"
     },
     "xxxx": {
         "message": "xxxx"

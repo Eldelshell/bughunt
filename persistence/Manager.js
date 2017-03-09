@@ -61,6 +61,10 @@ module.exports = {
 
     deleteComment: function(ticketId, commentId) {
         return this.getDB().deleteComment(ticketId, commentId);
+    },
+
+    getStats: function() {
+        return this.getDB().getStats();
     }
 
 };

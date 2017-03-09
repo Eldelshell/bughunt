@@ -1,27 +1,47 @@
 <div class="panel panel-default" style="margin-bottom: 0">
     <div class="panel-heading">
-        <form class="form-inline" method="GET" action="/dashboard">
+        <form id="search-form" class="form-horizontal" method="GET" action="/dashboard">
             <div class="form-group">
                 <label class="sr-only" for="status">$$label_search$$</label>
+
+                <div class="col-sm-12">
                 <input
                     type="search"
                     name="search"
                     placeholder="$$label_search_placeholder$$"
-                    class="form-control input-sm"
+                    class="form-control"
                     value="{{search}}"/>
+                </div>
             </div>
 
-            <input class="btn btn-sm btn-primary" type="submit" value="$$label_search$$">
-            <a href="/dashboard" class="btn btn-sm btn-default">$$label_clear$$</a>
+            <div class="search-buttons" style="text-align: center;">
+                <a href="/bug" class="btn btn-md btn-primary">
+                    <i class="fa fa-plus"></i><br/>$$label_add_ticket$$
+                </a>
+                <button class="btn btn-md btn-info" type="submit" form="search-form">
+                    <i class="fa fa-plus"></i><br/>$$label_search$$
+                </button>
+                <a href="/dashboard" class="btn btn-md btn-default">
+                    <i class="fa fa-repeat"></i><br/>$$label_clear$$
+                </a>
+            </div>
         </form>
     </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="panel-title">
-            <span class="label label-success clickable" data-search="/dashboard?search=is:open">{{open}} $$label_status_open$$</span>
-            <span class="label label-warning clickable" data-search="/dashboard?search=is:progress">{{progress}} $$label_status_progress$$</span>
-            <span class="label label-default clickable" data-search="/dashboard?search=is:closed">{{closed}} $$label_status_closed$$</span>
+        <hr class="panel-title-separator"/>
+        <div class="panel-title" style="text-align: center;">
+            <span class="label label-success clickable" data-search="/dashboard?search=is:open">{{stats.open}} $$label_status_open$$</span>
+            <span class="label label-warning clickable" data-search="/dashboard?search=is:progress">{{stats.progress}} $$label_status_progress$$</span>
+            <span class="label label-default clickable" data-search="/dashboard?search=is:closed">{{stats.closed}} $$label_status_closed$$</span>
+            <span>·</span>
+            <span class="label label-success clickable" data-search="/dashboard?search=is:low">{{stats.low}} $$label_low$$</span>
+            <span class="label label-warning clickable" data-search="/dashboard?search=is:critical">{{stats.critical}} $$label_critical$$</span>
+            <span class="label label-danger clickable" data-search="/dashboard?search=is:blocker">{{stats.blocker}} $$label_blocker$$</span>
+            <span>·</span>
+            <span class="label label-success clickable" data-search="/dashboard?search=is:public">{{stats.public}} $$label_public$$</span>
+            <span class="label label-danger clickable" data-search="/dashboard?search=is:private">{{stats.private}} $$label_private$$</span>
         </div>
     </div>
     <div class="panel-body">

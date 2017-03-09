@@ -21,6 +21,8 @@ class LowDB {
             id: Random.guid(),
             created: Date.now(),
             active: true,
+            private: false,
+            level: 'low',
             appId: data.appId,
             appVersion: data.appVersion,
             email: data.email,
@@ -52,9 +54,19 @@ class LowDB {
         const terms = search.split(' ');
         let results = tickets;
         terms.forEach((term) => {
+            if(term === 'is:public'){
+                results = results.filter((ticket) => ticket.private === false);
+                return;
+            }
+
+            if(term === 'is:private'){
+                results = results.filter((ticket) => ticket.private === true);
+                return;
+            }
+
             if(term.includes('is:')){
                 const t = term.split(':');
-                results = results.filter((ticket) => ticket.status === t[1] || ticket.type === t[1]);
+                results = results.filter((ticket) => ticket.status === t[1] || ticket.type === t[1] || ticket.level === t[1]);
             }else{
                 const r = tickets.filter((ticket) => ticket.title.includes(term) || ticket.description.includes(term));
                 results.push(...r);
@@ -70,7 +82,27 @@ class LowDB {
     }
 
     async setTicketStatus(id, status) {
-        await this._db.get('tickets').find({id: id}).assign({status: status}).write();
+        if(['private', 'public'].includes(status)){
+            await this._db.get('tickets').find({id: id}).assign({private: (status === 'private')}).write();
+        }else if(['low', 'critical', 'blocker'].includes(status)){
+            await this._db.get('tickets').find({id: id}).assign({level: status}).write();
+        }else{
+            await this._db.get('tickets').find({id: id}).assign({status: status}).write();
+        }
+    }
+
+    async getStats() {
+        const tickets = await this._db.get('tickets').filter({active: true}).value();
+        return {
+            open: tickets.filter((el) => el.status === 'open').length,
+            progress: tickets.filter((el) => el.status === 'progress').length,
+            closed: tickets.filter((el) => el.status === 'closed').length,
+            low: tickets.filter((el) => el.level === 'low').length,
+            critical: tickets.filter((el) => el.level === 'critical').length,
+            blocker: tickets.filter((el) => el.level === 'blocker').length,
+            public: tickets.filter((el) => !el.private).length,
+            private: tickets.filter((el) => el.private).length
+        }
     }
 
     async addComment(id, user, comment) {

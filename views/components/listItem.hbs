@@ -1,7 +1,18 @@
 <div class="list-group">
     <a href="/ticket/{{id}}" class="list-group-item">
-        <span class="badge btn-info search-badge" data-search="/dashboard?search=is:{{status}} is:{{type}}">$$label_status_{{status}}$$&nbsp;&nbsp;<i class="fa $$class_type_{{type}}$$"></i></span>
-        <h4 class="list-group-item-heading">{{truncate title 50}}</h4>
-        <p class="list-group-item-text italic">{{truncate description 30}}</p>
+        <span class="badge"><i class="fa fa-chevron-right"></i></span>
+        <h4 class="list-group-item-heading">
+            {{truncate title 50}}
+        </h4>
+        <p class="list-group-item-text">
+            <span class="label label-$$class_status_{{status}}$$">$$label_status_{{status}}$$</span>
+            <span class="label label-$$class_type_{{type}}$$">$$label_type_{{type}}$$&nbsp;&nbsp;<i class="fa $$icon_type_{{type}}$$"></i></span>
+            <span class="label label-$$class_level_{{level}}$$">$$label_{{level}}$$&nbsp;&nbsp;<i class="fa $$icon_level_{{level}}$$"></i></span>
+            {{#if private}}
+                <span class="label label-danger">$$label_private$$&nbsp;&nbsp;<i class="fa fa-lock"></i></span>
+            {{else}}
+                <span class="label label-success">$$label_public$$&nbsp;&nbsp;<i class="fa fa-unlock"></i></span>
+            {{/if}}
+        </p>
     </a>
 </div>

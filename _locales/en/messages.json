@@ -11,32 +11,35 @@
     "format_date_time": {
         "message": "MM/DD/YYYY HH:mm"
     },
-    "label_status_open": {
-        "message": "Open"
+    "class_level_critical": {
+        "message": "warning"
     },
-    "label_status_closed": {
-        "message": "Closed"
+    "class_level_blocker": {
+        "message": "danger"
     },
-    "label_status_duplicate": {
-        "message": "Duplicate"
+    "class_level_low": {
+        "message": "success"
     },
-    "label_status_migrated": {
-        "message": "Migrated"
+    "icon_level_critical": {
+        "message": "fa-arrow-circle-up"
     },
-    "label_status_progress": {
-        "message": "In Progress"
+    "icon_level_blocker": {
+        "message": "fa-bomb"
+    },
+    "icon_level_low": {
+        "message": "fa-arrow-circle-down"
     },
     "class_type_idea": {
-        "message": "fa-info-circle"
+        "message": "info"
     },
     "class_type_bug": {
-        "message": "fa-bug"
+        "message": "danger"
     },
     "class_type_problem": {
-        "message": "fa-question-circle"
+        "message": "warning"
     },
     "class_type_improvement": {
-        "message": "fa-plus-circle"
+        "message": "success"
     },
     "class_status_open": {
         "message": "info"
@@ -53,8 +56,62 @@
     "class_status_migrated": {
         "message": "success"
     },
+    "icon_type_idea": {
+        "message": "fa-info-circle"
+    },
+    "icon_type_bug": {
+        "message": "fa-bug"
+    },
+    "icon_type_problem": {
+        "message": "fa-question-circle"
+    },
+    "icon_type_improvement": {
+        "message": "fa-plus-circle"
+    },
+    "label_status_open": {
+        "message": "Open"
+    },
+    "label_status_closed": {
+        "message": "Closed"
+    },
+    "label_status_duplicate": {
+        "message": "Duplicate"
+    },
+    "label_status_migrated": {
+        "message": "Migrated"
+    },
+    "label_status_progress": {
+        "message": "In Progress"
+    },
     "label_email": {
         "message": "Email Address"
+    },
+    "label_public": {
+        "message": "Public"
+    },
+    "label_private": {
+        "message": "Private"
+    },
+    "label_critical": {
+        "message": "High"
+    },
+    "label_blocker": {
+        "message": "Blocker"
+    },
+    "label_low": {
+        "message": "Low"
+    },
+    "label_type_bug": {
+        "message": "Bug"
+    },
+    "label_type_improvement": {
+        "message": "Improvement"
+    },
+    "label_type_problem": {
+        "message": "Problem"
+    },
+    "label_type_idea": {
+        "message": "Idea"
     },
     "xxxx": {
         "message": "xxxx"

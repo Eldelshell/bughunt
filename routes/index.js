@@ -75,6 +75,7 @@ router.get('/logout', function(req, res, next) {
 
 router.get('/dashboard', messagesMiddleware, isSessionValid, async function(req, res, next) {
     const tickets = await Persistence.getTickets(req.query.search);
+    const stats = await Persistence.getStats();
     const page = _.defaultTo(req.query.page, 1);
     const pageSize = Config.of().getPageSize();
     const pages = Math.ceil(tickets.length / pageSize);
@@ -82,8 +83,7 @@ router.get('/dashboard', messagesMiddleware, isSessionValid, async function(req,
     res.render('dashboard', {
         email: req.params.email,
         open: tickets.filter((el) => el.status === 'open').length,
-        progress: tickets.filter((el) => el.status === 'progress').length,
-        closed: tickets.filter((el) => el.status === 'closed').length,
+        stats: stats,
         tickets: tickets.slice(pageSize * (page - 1), pageSize * (page)),
         search: req.query.search,
         pagination: {
