@@ -4,19 +4,39 @@
     <div class="panel-footer">
         <ul class="pagination">
             {{#paginate this type="first"}}
-                <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">First</a></li>
+                <li {{#if disabled}}class="disabled"{{/if}}>
+                    <a class="pagination-link" href="?page={{n}}">
+                        <i class="fa fa-fast-backward"></i>
+                    </a>
+                </li>
             {{/paginate}}
             {{#paginate this type="previous"}}
-                <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Prev</a></li>
+                <li {{#if disabled}}class="disabled"{{/if}}>
+                    <a class="pagination-link" href="?page={{n}}">
+                        <i class="fa fa-backward"></i>
+                    </a>
+                </li>
             {{/paginate}}
             {{#paginate this type="middle" limit="7"}}
-                <li {{#if active}}class="active"{{/if}}><a class="pagination-link" href="?page={{n}}">{{n}}</a></li>
+                <li {{#if active}}class="active"{{/if}}>
+                    <a class="pagination-link" href="?page={{n}}">
+                        {{n}}
+                    </a>
+                </li>
             {{/paginate}}
             {{#paginate this type="next"}}
-                <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Next</a></li>
+                <li {{#if disabled}}class="disabled"{{/if}}>
+                    <a class="pagination-link" href="?page={{n}}">
+                        <i class="fa fa-forward"></i>
+                    </a>
+                </li>
             {{/paginate}}
             {{#paginate this type="last"}}
-                <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Last</a></li>
+                <li {{#if disabled}}class="disabled"{{/if}}>
+                    <a class="pagination-link" href="?page={{n}}">
+                        <i class="fa fa-fast-forward"></i>
+                    </a>
+                </li>
             {{/paginate}}
         </ul>
     </div>
