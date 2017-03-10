@@ -105,9 +105,44 @@ class Messages {
         if(regExp.test(key)){
             key = key.replace(/\$/g,'');
         }
+
+        if(key.startsWith('write_')){
+            return Messages.write(req, key);
+        }
+
         const self = Messages.of();
         const lang = self._parseLanguageHeader(req);
         return key ? self._getText.apply(self, [lang, key, a, b, c]) : '???' + key + '???';
+    }
+
+    /**
+     * Parses write commands.
+     * @param {Object} req - Request object
+     * @param {String} command - Command to retrieve its message and the value in a format like write_xxx:foo
+     * @return  {String} Value or ???key??? if empty or invalid
+     */
+    static write(req, command) {
+        const keyValue = command.split(':');
+        switch (keyValue[0]) {
+            case 'write_date_time':
+                return Messages.dateTime(req, new Moment(parseInt(keyValue[1])));
+                break;
+            case 'write_date':
+                return Messages.date(req, new Moment(parseInt(keyValue[1])));
+                break;
+            case 'write_time':
+                return Messages.time(req, new Moment(parseInt(keyValue[1])));
+                break;
+            case 'write_number':
+                return Messages.number(req, parseInt(keyValue[1]));
+                break;
+            case 'write_plural':
+                const value = keyValue[2] ? parseInt(keyValue[2]) : 0;
+                return Messages.plural(req, keyValue[1], value);
+                break;
+            default:
+                return `???${command}???`;
+        }
     }
 
     /**
