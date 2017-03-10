@@ -32,6 +32,16 @@ module.exports = {
     isSessionValid: function(req, res, next) {
         const session = req.cookies[cookie];
         const email = authentication.getEmail(session);
+        req.params.email = email;
+        next();
+    },
+
+    /**
+     * Middleware that verifies the session and sets the email as a request parameter.
+     */
+    isAdmin: function(req, res, next) {
+        const session = req.cookies[cookie];
+        const email = authentication.getEmail(session);
 
         if(!email){
             // Invalid session

@@ -11,6 +11,7 @@ const Authentication = require('../utils/Authentication');
 const cookie = 'jnjSession';
 const authentication = new Authentication();
 const messagesMiddleware = Middleware.messages;
+const isAdmin = Middleware.isAdmin;
 const isSessionValid = Middleware.isSessionValid;
 const isSessionPresent = Middleware.isSessionPresent;
 
@@ -52,7 +53,7 @@ router.get('/login', messagesMiddleware, isSessionPresent, function(req, res, ne
     res.render('login');
 });
 
-router.post('/login', messagesMiddleware, async function(req, res, next) {
+router.post('/login', async function(req, res, next) {
     const {email, password} = req.body;
 
     const user = await Persistence.login(email, password);
@@ -73,7 +74,7 @@ router.get('/logout', function(req, res, next) {
     res.clearCookie(cookie).redirect('/');
 });
 
-router.get('/dashboard', messagesMiddleware, isSessionValid, async function(req, res, next) {
+router.get('/dashboard', messagesMiddleware, isAdmin, async function(req, res, next) {
     const tickets = await Persistence.getTickets(req.query.search);
     const stats = await Persistence.getStats();
     const page = _.defaultTo(req.query.page, 1);
@@ -104,12 +105,13 @@ router.get('/ticket/:id', messagesMiddleware, isSessionValid, async function(req
     const app = await Persistence.getApp(ticket.appId, ticket.appVersion);
     res.render('detail', {
         email: req.params.email,
+        isAdmin: !_.isEmpty(req.params.email),
         appName: app.name,
         ticket: ticket
     });
 });
 
-router.put('/ticket/:id', messagesMiddleware, isSessionValid, async function(req, res, next) {
+router.put('/ticket/:id', messagesMiddleware, isAdmin, async function(req, res, next) {
     await Persistence.setTicketStatus(req.params.id, req.body.status);
     res.sendStatus(200);
 });
@@ -120,7 +122,7 @@ router.post('/ticket/:id/comment', isSessionValid, async function(req, res, next
     res.redirect('/ticket/' + id);
 });
 
-router.delete('/ticket/:id/comment/:cid', isSessionValid, async function(req, res, next) {
+router.delete('/ticket/:id/comment/:cid', isAdmin, async function(req, res, next) {
     const { id, cid } = req.params;
     await Persistence.deleteComment(id, cid);
     res.sendStatus(200);

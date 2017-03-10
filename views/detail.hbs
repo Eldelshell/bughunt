@@ -1,24 +1,30 @@
-<ol class="breadcrumb">
-    <li><a href="/dashboard">$$label_dashboard$$</a></li>
-    <li class="active">{{truncate ticket.title 30}}</li>
-</ol>
+{{#if isAdmin}}
+    <ol class="breadcrumb">
+        <li><a href="/dashboard">$$label_dashboard$$</a></li>
+        <li class="active">{{truncate ticket.title 30}}</li>
+    </ol>
+{{/if}}
 
 <div class="panel panel-info">
     <div class="panel-heading">
         <div class="panel-title" style="margin-bottom: 10px;">
             {{ticket.title}} ($$write_date_time:{{ticket.created}}$$)
         </div>
-        <div class="panel-title">
-            {{> ticket/toolbar ticket}}
-        </div>
+        {{#if isAdmin}}
+            <div class="panel-title">
+                {{> ticket/toolbar ticket}}
+            </div>
+        {{/if}}
     </div>
     <div class="panel-body">
-        <div style="float: right;">
-            {{> ticket/level ticket }}
-        </div>
+        {{#if isAdmin}}
+            <div style="float: right;">
+                {{> ticket/level ticket }}
+            </div>
+        {{/if}}
         <p><span><strong>$$label_app_name$$</strong></span>&nbsp;<span>{{appName}}</span></p>
         <p><span><strong>$$label_app_version$$</strong></span>&nbsp;<span>{{ticket.appVersion}}</span></p>
-        <p>{{> ticket/status ticket}}</p>
+        <p>{{> ticket/status this}}</p>
         <hr/>
         <div class="ticket-description">
             {{#markdown}}{{ticket.description}}{{/markdown}}
