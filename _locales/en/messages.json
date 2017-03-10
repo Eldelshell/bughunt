@@ -113,6 +113,15 @@
     "label_type_idea": {
         "message": "Idea"
     },
+    "label_comments.zero": {
+        "message": "No comments"
+    },
+    "label_comments.single": {
+        "message": "One comment"
+    },
+    "label_comments.plural": {
+        "message": "%s Comments"
+    },
     "xxxx": {
         "message": "xxxx"
     }
