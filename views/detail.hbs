@@ -7,80 +7,22 @@
     <div class="panel-heading">
         <div class="panel-title">
             {{ticket.title}}
+            {{> ticket/toolbar ticket}}
         </div>
     </div>
     <div class="panel-body">
         <div style="float: right;">
-            <p>
-                <span class="badge btn btn-danger level-badge" data-level="blocker">
-                    {{#compare ticket.level "blocker"}}<i class="fa fa-check"></i>{{/compare}}
-                    {{#compare ticket.level "blocker" operator="!="}}<i class="fa fa-circle-o"></i>{{/compare}}
-                    $$label_blocker$$
-                </span>
-            </p>
-            <p>
-                <span class="badge btn btn-warning level-badge" data-level="critical">
-                    {{#compare ticket.level "critical"}}<i class="fa fa-check"></i>{{/compare}}
-                    {{#compare ticket.level "critical" operator="!="}}<i class="fa fa-circle-o"></i>{{/compare}}
-                    $$label_critical$$
-                </span>
-            </p>
-            <p>
-                <span class="badge btn btn-success level-badge" data-level="low">
-                    {{#compare ticket.level "low"}}<i class="fa fa-check"></i>{{/compare}}
-                    {{#compare ticket.level "low" operator="!="}}<i class="fa fa-circle-o"></i>{{/compare}}
-                    $$label_low$$
-                </span>
-            </p>
-
+            {{> ticket/level ticket }}
         </div>
         <p><span><strong>$$label_app_name$$</strong></span>&nbsp;<span>{{appName}}</span></p>
         <p><span><strong>$$label_app_version$$</strong></span>&nbsp;<span>{{ticket.appVersion}}</span></p>
-        <p>
-            <span class="label label-$$class_status_{{ticket.status}}$$">$$label_status_{{ticket.status}}$$&nbsp;&nbsp;<i class="fa $$icon_type_{{ticket.type}}$$"></i></span>
-            {{#if ticket.private}}
-                <span class="label label-danger">$$label_private$$&nbsp;&nbsp;<i class="fa fa-lock"></i></span>
-            {{else}}
-                <span class="label label-success">$$label_public$$&nbsp;&nbsp;<i class="fa fa-unlock"></i></span>
-            {{/if}}
-        </p>
+        <p>{{> ticket/status ticket}}</p>
         <hr/>
         <div class="ticket-description">
             {{#markdown}}{{ticket.description}}{{/markdown}}
         </div>
-        <hr/>
     </div>
-    <div class="panel-footer buttons">
-        {{#compare ticket.status "open"}}
-            <button id="start-progress-button" class="btn btn-sm btn-default">
-                <i class="fa fa-play"></i><br>$$label_start_progress$$
-            </button>
-            <button id="close-button" class="btn btn-sm btn-default">
-                <i class="fa fa-close"></i><br>$$label_close$$
-            </button>
-        {{/compare}}
-        {{#compare ticket.status "progress"}}
-            <button id="reopen-button" class="btn btn-sm btn-default">
-                <i class="fa fa-stop"></i><br>$$label_stop_progress$$
-            </button>
-            <button id="close-button" class="btn btn-sm btn-default">
-                <i class="fa fa-close"></i><br>$$label_close$$
-            </button>
-        {{/compare}}
-        {{#compare ticket.status "closed"}}
-            <button id="reopen-button" class="btn btn-sm btn-default">
-                <i class="fa fa-refresh"></i><br>$$label_open$$
-            </button>
-        {{/compare}}
-        {{#if ticket.private}}
-            <button id="private-button" class="btn btn-sm btn-default">
-                <i class="fa fa-unlock"></i><br>$$label_public$$
-            </button>
-        {{else}}
-            <button id="public-button" class="btn btn-sm btn-default">
-                <i class="fa fa-lock"></i><br>$$label_private$$
-            </button>
-        {{/if}}
+    <div class="panel-footer">
     </div>
 </div>
 
@@ -88,21 +30,7 @@
 <hr/>
 
 {{#each ticket.comments}}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <span></span>
-            <span>$$label_created$$ {{created}}</span>
-            <span>$$label_by$$ {{owner}}</span>
-        </div>
-        <div class="panel-body">
-            {{#markdown}}{{text}}{{/markdown}}
-        </div>
-        <div class="panel-footer buttons">
-            <button data-comment-id="{{id}}" class="btn btn-sm btn-default delete-button">
-                <i class="fa fa-trash"></i>
-            </button>
-        </div>
-    </div>
+    {{> ticket/comment this}}
 {{/each}}
 
 <form class="form" method="POST" action="/ticket/{{ticket.id}}/comment">
@@ -195,7 +123,6 @@
         });
 
         // Wrap images with a link
-        // $('.ticket-description img').wrap( "<a href='#'></a>" );
         document.querySelectorAll('.ticket-description img').forEach(wrapImage);
     });
 

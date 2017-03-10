@@ -1,0 +1,23 @@
+{{!-- {{> ticket/level ticket }} --}}
+
+<p>
+    <span class="badge btn btn-danger level-badge" data-level="blocker">
+        {{#compare level "blocker"}}<i class="fa fa-check"></i>{{/compare}}
+        {{#compare level "blocker" operator="!="}}<i class="fa fa-circle-o"></i>{{/compare}}
+        $$label_blocker$$
+    </span>
+</p>
+<p>
+    <span class="badge btn btn-warning level-badge" data-level="critical">
+        {{#compare level "critical"}}<i class="fa fa-check"></i>{{/compare}}
+        {{#compare level "critical" operator="!="}}<i class="fa fa-circle-o"></i>{{/compare}}
+        $$label_critical$$
+    </span>
+</p>
+<p>
+    <span class="badge btn btn-success level-badge" data-level="low">
+        {{#compare level "low"}}<i class="fa fa-check"></i>{{/compare}}
+        {{#compare level "low" operator="!="}}<i class="fa fa-circle-o"></i>{{/compare}}
+        $$label_low$$
+    </span>
+</p>

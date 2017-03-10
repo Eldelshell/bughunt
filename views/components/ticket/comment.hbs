@@ -1,0 +1,17 @@
+{{!--  {{> ticket/comment comment}}  --}}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span></span>
+        <span>$$label_created$$ {{created}}</span>
+        <span>$$label_by$$ {{owner}}</span>
+    </div>
+    <div class="panel-body">
+        {{#markdown}}{{text}}{{/markdown}}
+    </div>
+    <div class="panel-footer buttons">
+        <button data-comment-id="{{id}}" class="btn btn-sm btn-default delete-button">
+            <i class="fa fa-trash"></i>
+        </button>
+    </div>
+</div>

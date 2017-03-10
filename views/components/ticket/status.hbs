@@ -1,0 +1,8 @@
+{{!--  {{> ticket/status ticket}}  --}}
+
+<span class="label label-$$class_status_{{status}}$$">$$label_status_{{status}}$$&nbsp;&nbsp;<i class="fa $$icon_type_{{type}}$$"></i></span>
+{{#if private}}
+    <span class="label label-danger">$$label_private$$&nbsp;&nbsp;<i class="fa fa-lock"></i></span>
+{{else}}
+    <span class="label label-success">$$label_public$$&nbsp;&nbsp;<i class="fa fa-unlock"></i></span>
+{{/if}}
