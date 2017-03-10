@@ -200,6 +200,9 @@
     "label_login": {
         "message": "Iniciar sesión"
     },
+    "label_no_tickets": {
+        "message": "No hay tickets para mostrar"
+    },
     "xxxx": {
         "message": "xxxx"
     }
