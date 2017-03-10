@@ -58,7 +58,7 @@
         document.querySelectorAll('.pagination-link').forEach(function(btn){
             btn.addEventListener('click', function(evt){
                 evt.preventDefault();
-                window.location = evt.target.href + '&search=' + '{{search}}';
+                window.location = evt.currentTarget.href + '&search=' + '{{search}}';
             });
         });
 
