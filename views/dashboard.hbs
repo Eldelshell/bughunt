@@ -32,16 +32,7 @@
     <div class="panel-heading">
         <hr class="panel-title-separator"/>
         <div class="panel-title" style="text-align: center;">
-            <span class="label label-success clickable" data-search="/dashboard?search=is:open">{{stats.open}} $$label_status_open$$</span>
-            <span class="label label-warning clickable" data-search="/dashboard?search=is:progress">{{stats.progress}} $$label_status_progress$$</span>
-            <span class="label label-default clickable" data-search="/dashboard?search=is:closed">{{stats.closed}} $$label_status_closed$$</span>
-            <span>·</span>
-            <span class="label label-success clickable" data-search="/dashboard?search=is:low">{{stats.low}} $$label_low$$</span>
-            <span class="label label-warning clickable" data-search="/dashboard?search=is:critical">{{stats.critical}} $$label_critical$$</span>
-            <span class="label label-danger clickable" data-search="/dashboard?search=is:blocker">{{stats.blocker}} $$label_blocker$$</span>
-            <span>·</span>
-            <span class="label label-success clickable" data-search="/dashboard?search=is:public">{{stats.public}} $$label_public$$</span>
-            <span class="label label-danger clickable" data-search="/dashboard?search=is:private">{{stats.private}} $$label_private$$</span>
+            {{> dashboard/stats stats}}
         </div>
     </div>
     <div class="panel-body">
@@ -56,27 +47,7 @@
         {{/if}}
     </div>
     {{#if pagination}}
-        {{#if pagination.show}}
-            <div class="panel-footer">
-                <ul class="pagination">
-                    {{#paginate pagination type="first"}}
-                        <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">First</a></li>
-                    {{/paginate}}
-                    {{#paginate pagination type="previous"}}
-                        <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Prev</a></li>
-                    {{/paginate}}
-                    {{#paginate pagination type="middle" limit="7"}}
-                        <li {{#if active}}class="active"{{/if}}><a class="pagination-link" href="?page={{n}}">{{n}}</a></li>
-                    {{/paginate}}
-                    {{#paginate pagination type="next"}}
-                        <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Next</a></li>
-                    {{/paginate}}
-                    {{#paginate pagination type="last"}}
-                        <li {{#if disabled}}class="disabled"{{/if}}><a class="pagination-link" href="?page={{n}}">Last</a></li>
-                    {{/paginate}}
-                </ul>
-            </div>
-        {{/if}}
+        {{> dashboard/pagination pagination}}
     {{/if}}
 </div>
 

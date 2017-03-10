@@ -1,0 +1,12 @@
+{{!--  {{> dashboard/stats stats}}  --}}
+
+<span class="label label-success clickable" data-search="/dashboard?search=is:open">{{open}} $$label_status_open$$</span>
+<span class="label label-warning clickable" data-search="/dashboard?search=is:progress">{{progress}} $$label_status_progress$$</span>
+<span class="label label-default clickable" data-search="/dashboard?search=is:closed">{{closed}} $$label_status_closed$$</span>
+<span>·</span>
+<span class="label label-success clickable" data-search="/dashboard?search=is:low">{{low}} $$label_low$$</span>
+<span class="label label-warning clickable" data-search="/dashboard?search=is:critical">{{critical}} $$label_critical$$</span>
+<span class="label label-danger clickable" data-search="/dashboard?search=is:blocker">{{blocker}} $$label_blocker$$</span>
+<span>·</span>
+<span class="label label-success clickable" data-search="/dashboard?search=is:public">{{public}} $$label_public$$</span>
+<span class="label label-danger clickable" data-search="/dashboard?search=is:private">{{private}} $$label_private$$</span>
