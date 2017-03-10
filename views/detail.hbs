@@ -152,6 +152,17 @@
         el.addEventListener(event, fn);
     };
 
+    var wrapImage = function(img) {
+        var url = img.getAttribute('src');
+        var parent = img.parentElement;
+        parent.removeChild(img);
+        var link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('target', '_blank');
+        link.appendChild(img);
+        parent.appendChild(link);
+    };
+
     window.addEventListener('load', function(){
         document.querySelectorAll('.delete-button').forEach(function(btn){
             btn.addEventListener('click', deleteComment);
@@ -182,6 +193,10 @@
         addEventListeners('public-button', 'click', function(evt){
             setTicketStatus(evt, 'private');
         });
+
+        // Wrap images with a link
+        // $('.ticket-description img').wrap( "<a href='#'></a>" );
+        document.querySelectorAll('.ticket-description img').forEach(wrapImage);
     });
 
 
