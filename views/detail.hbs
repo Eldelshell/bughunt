@@ -1,12 +1,14 @@
 <ol class="breadcrumb">
     <li><a href="/dashboard">$$label_dashboard$$</a></li>
-    <li class="active">{{ticket.title}}</li>
+    <li class="active">{{truncate ticket.title 30}}</li>
 </ol>
 
 <div class="panel panel-info">
     <div class="panel-heading">
+        <div class="panel-title" style="margin-bottom: 10px;">
+            {{ticket.title}} ($$write_date_time:{{ticket.created}}$$)
+        </div>
         <div class="panel-title">
-            {{ticket.title}}
             {{> ticket/toolbar ticket}}
         </div>
     </div>
