@@ -122,6 +122,84 @@
     "label_comments.plural": {
         "message": "%s Comentarios"
     },
+    "label_dashboard": {
+        "message": "Dashboard"
+    },
+    "label_start_progress": {
+        "message": "Iniciar progreso"
+    },
+    "label_stop_progress": {
+        "message": "Detener progreso"
+    },
+    "label_close": {
+        "message": "Cerrar"
+    },
+    "label_open": {
+        "message": "Abrir"
+    },
+    "label_app_name": {
+        "message": "Proyecto:"
+    },
+    "label_app_version": {
+        "message": "Versión:"
+    },
+    "label_created": {
+        "message": "Creado:"
+    },
+    "label_by": {
+        "message": "Por:"
+    },
+    "label_comment": {
+        "message": "Comentario"
+    },
+    "label_markdown_support": {
+        "message": "Puede usar Markdown"
+    },
+    "label_add_comment": {
+        "message": "Añadir comentario"
+    },
+    "label_add_ticket": {
+        "message": "Añadir ticket"
+    },
+    "label_search": {
+        "message": "Buscar"
+    },
+    "label_clear": {
+        "message": "Limpiar"
+    },
+    "label_search_placeholder": {
+        "message": "Buscar (is:bug is:open titulo del ticket)"
+    },
+    "label_title": {
+        "message": "Título"
+    },
+    "label_type": {
+        "message": "Tipo"
+    },
+    "label_description": {
+        "message": "Descripción"
+    },
+    "label_send": {
+        "message": "Enviar"
+    },
+    "label_thank_you": {
+        "message": "¡Gracias!"
+    },
+    "label_email_placeholder": {
+        "message": "Su correo electrónico (opcional)"
+    },
+    "label_title_placeholder": {
+        "message": "Título del ticket"
+    },
+    "label_password": {
+        "message": "Contraseña"
+    },
+    "label_password_placeholder": {
+        "message": "Contraseña"
+    },
+    "label_login": {
+        "message": "Iniciar sesión"
+    },
     "xxxx": {
         "message": "xxxx"
     }

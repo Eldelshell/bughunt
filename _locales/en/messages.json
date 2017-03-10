@@ -122,6 +122,84 @@
     "label_comments.plural": {
         "message": "%s Comments"
     },
+    "label_dashboard": {
+        "message": "Dashboard"
+    },
+    "label_start_progress": {
+        "message": "Start progress"
+    },
+    "label_stop_progress": {
+        "message": "Stop progress"
+    },
+    "label_close": {
+        "message": "Close"
+    },
+    "label_open": {
+        "message": "Open"
+    },
+    "label_app_name": {
+        "message": "Project:"
+    },
+    "label_app_version": {
+        "message": "Version:"
+    },
+    "label_created": {
+        "message": "Created:"
+    },
+    "label_by": {
+        "message": "By:"
+    },
+    "label_comment": {
+        "message": "Comment"
+    },
+    "label_markdown_support": {
+        "message": "You can use Markdown"
+    },
+    "label_add_comment": {
+        "message": "Add comment"
+    },
+    "label_add_ticket": {
+        "message": "Add ticket"
+    },
+    "label_search": {
+        "message": "Search"
+    },
+    "label_clear": {
+        "message": "Reset"
+    },
+    "label_search_placeholder": {
+        "message": "Search (is:bug is:open title)"
+    },
+    "label_title": {
+        "message": "Title"
+    },
+    "label_type": {
+        "message": "Type"
+    },
+    "label_description": {
+        "message": "Description"
+    },
+    "label_send": {
+        "message": "Send"
+    },
+    "label_thank_you": {
+        "message": "Thanks!"
+    },
+    "label_email_placeholder": {
+        "message": "Email address (optional)"
+    },
+    "label_title_placeholder": {
+        "message": "Summary of the ticket"
+    },
+    "label_password": {
+        "message": "Password"
+    },
+    "label_password_placeholder": {
+        "message": "Password"
+    },
+    "label_login": {
+        "message": "Login"
+    },
     "xxxx": {
         "message": "xxxx"
     }
