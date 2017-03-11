@@ -7,11 +7,11 @@
         <span>$$label_by$$ {{owner}}</span>
     </div>
     <div class="panel-body">
+        <div class="" style="float: right;">
+            <button data-comment-id="{{id}}" class="btn btn-sm btn-default delete-button">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
         {{#markdown}}{{text}}{{/markdown}}
-    </div>
-    <div class="panel-footer buttons">
-        <button data-comment-id="{{id}}" class="btn btn-sm btn-default delete-button">
-            <i class="fa fa-trash"></i>
-        </button>
     </div>
 </div>
