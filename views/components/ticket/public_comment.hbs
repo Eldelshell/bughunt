@@ -1,0 +1,10 @@
+{{!--  {{> ticket/comment comment}}  --}}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span>$$label_created$$ $$write_date_time:{{created}}$$</span>
+    </div>
+    <div class="panel-body">
+        {{#markdown}}{{text}}{{/markdown}}
+    </div>
+</div>

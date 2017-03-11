@@ -1,36 +1,7 @@
-<div class="panel panel-default" style="margin-bottom: 0">
-    <div class="panel-heading">
-        <form id="search-form" class="form-horizontal" method="GET" action="/dashboard">
-            <div class="form-group">
-                <label class="sr-only" for="status">$$label_search$$</label>
+{{> toolbar this}}
 
-                <div class="col-sm-12">
-                <input
-                    type="search"
-                    name="search"
-                    placeholder="$$label_search_placeholder$$"
-                    class="form-control"
-                    value="{{search}}"/>
-                </div>
-            </div>
-
-            <div class="search-buttons" style="text-align: center;">
-                <a href="/bug" class="btn btn-md btn-primary">
-                    <i class="fa fa-plus"></i><br/>$$label_add_ticket$$
-                </a>
-                <button class="btn btn-md btn-info" type="submit" form="search-form">
-                    <i class="fa fa-plus"></i><br/>$$label_search$$
-                </button>
-                <a href="/dashboard" class="btn btn-md btn-default">
-                    <i class="fa fa-repeat"></i><br/>$$label_clear$$
-                </a>
-            </div>
-        </form>
-    </div>
-</div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <hr class="panel-title-separator"/>
         <div class="panel-title" style="text-align: center;">
             {{> dashboard/stats stats}}
         </div>

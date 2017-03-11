@@ -1,8 +1,5 @@
 {{#if isAdmin}}
-    <ol class="breadcrumb">
-        <li><a href="/dashboard">$$label_dashboard$$</a></li>
-        <li class="active">{{truncate ticket.title 30}}</li>
-    </ol>
+    {{> toolbar this}}
 {{/if}}
 
 <div class="panel panel-info">
@@ -37,9 +34,15 @@
 <h4>$$write_plural:label_comments:{{ticket.comments.length}}$$</h4>
 <hr/>
 
-{{#each ticket.comments}}
-    {{> ticket/comment this}}
-{{/each}}
+{{#if isAdmin}}
+    {{#each ticket.comments}}
+        {{> ticket/comment this}}
+    {{/each}}
+{{else}}
+    {{#each ticket.comments}}
+        {{> ticket/public_comment this}}
+    {{/each}}
+{{/if}}
 
 <form class="form" method="POST" action="/ticket/{{ticket.id}}/comment">
     <div class="form-group">
