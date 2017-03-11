@@ -112,7 +112,7 @@ class Messages {
 
         const self = Messages.of();
         const lang = self._parseLanguageHeader(req);
-        return key ? self._getText.apply(self, [lang, key, a, b, c]) : '???' + key + '???';
+        return key ? self._getText.apply(self, [lang, key, a, b, c]) : `???${key}???`;
     }
 
     /**
@@ -305,11 +305,11 @@ class Messages {
 
         let text = this._getMessage(lang, key);
         if(!_.isString(text) || _.isEmpty(text)){
-            return '???' + key + '???';
+            return `???${key}???`;
         }
 
-        if(arguments.length > 1){
-            for(let i = 1; i < arguments.length; i++) {
+        if(arguments.length > 2){
+            for(let i = 2; i < arguments.length; i++) {
                 if (arguments[i] !== undefined) {
                     const arg = arguments[i];
                     text = text.replace('%s', arg);
