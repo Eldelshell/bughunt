@@ -60,8 +60,8 @@ router.get('/login', messagesMiddleware, isSessionPresent, function(req, res, ne
 
 router.post('/login', async function(req, res, next) {
     const {email, password} = req.body;
-
-    const user = await Persistence.login(email, password);
+    const pwd = authentication.hash(password);
+    const user = await Persistence.login(email, pwd);
     if(!user){
         logger.warn(`[index] Invalid login for user ${email}`);
         res.clearCookie(cookie).redirect('/login');

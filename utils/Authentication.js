@@ -38,6 +38,15 @@ class Authentication {
     }
 
     /**
+     * Hash the password with SHA256
+     * @param {String} password - the password to hash
+     * @returns {String} the password hashed
+     */
+    hash(password) {
+        return crypto.createHash('sha256').update(password).digest('base64');
+    }
+
+    /**
      * Encrypts the given data using AES-256-GCM
      * @param authObject
      * @returns {*}
