@@ -1,0 +1,71 @@
+<form class="form" method="POST" action="/ticket/{{ticket.id}}/comment">
+    <div class="form-group">
+        <label for="comment">$$label_comment$$ (min: 10/ max: 1000)</label>
+        <textarea class="form-control" rows="5" name="comment" minlength="10" maxlength="1000"></textarea>
+        <span class="markdown-notice">$$label_markdown_support$$</span>
+    </div>
+
+    <input class="btn btn-sm btn-primary long-button" type="submit" value="$$label_add_comment$$">
+</form>
+
+<div id="edit-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">$$label_edit_ticket$$</h4>
+      </div>
+      <div class="modal-body">
+        <form id="edit-ticket-form" action="/ticket/{{ticket.id}}" method="POST">
+            <div class="form-group">
+                <label for="title">$$label_title$$</label>
+                <input type="text" name="title" value="{{ticket.title}}" class="form-control" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="type">$$label_type$$</label>
+                <select name="type" class="form-control" value="{{ticket.type}}">
+                    <option value="bug" {{#compare ticket.type 'bug'}}selected{{/compare}}>$$label_type_bug$$</option>
+                    <option value="problem" {{#compare ticket.type 'problem'}}selected{{/compare}}>$$label_type_problem$$</option>
+                    <option value="idea" {{#compare ticket.type 'idea'}}selected{{/compare}}>$$label_type_idea$$</option>
+                    <option value="improvement" {{#compare ticket.type 'improvement'}}selected{{/compare}}>$$label_type_improvement$$</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="level">$$label_level$$</label>
+                <select name="level" class="form-control" value="{{ticket.level}}">
+                    <option value="blocker" {{#compare ticket.level 'blocker'}}selected{{/compare}}>$$label_blocker$$</option>
+                    <option value="critical" {{#compare ticket.level 'critical'}}selected{{/compare}}>$$label_critical$$</option>
+                    <option value="low" {{#compare ticket.level 'low'}}selected{{/compare}}>$$label_low$$</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" name="private" id="radio-private" value="false" {{#unless ticket.private}}checked{{/unless}}>
+                        $$label_public$$
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" name="private" id="radio-public" value="true" {{#if ticket.private}}checked{{/if}}>
+                        $$label_private$$
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">$$label_description$$ (min: 10/ max: 1000)</label>
+                <textarea class="form-control" rows="15" name="description" minlength="10" maxlength="1000">{{ticket.description}}</textarea>
+                <span class="markdown-notice">$$label_markdown_support$$</span>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">$$label_close$$</button>
+        <button form="edit-ticket-form" type="submit" class="btn btn-primary">$$label_save$$</button>
+      </div>
+    </div>
+  </div>
+</div>
