@@ -1,6 +1,7 @@
 const logger = require('winston');
 const crypto = require('crypto');
 const _ = require('lodash');
+const Config = require('../config/Manager');
 
 /**
  * Handle user authentication
@@ -10,7 +11,7 @@ const _ = require('lodash');
 class Authentication {
 
     constructor() {
-        this.secret = 'c7c15976d2472c84bf5a58ab8b4202d2af2b';
+        this.secret = Config.of().getSessionSecret();
     }
 
     encryptLoginToken(email, token) {

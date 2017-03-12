@@ -41,6 +41,10 @@ class Manager {
         return this._config.ui.pageSize;
     }
 
+    getSessionSecret() {
+        return this._config.security.sessionSecret;
+    }
+
 }
 
 Manager.of();
