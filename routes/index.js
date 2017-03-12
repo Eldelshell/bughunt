@@ -111,6 +111,32 @@ router.get('/ticket/:id', messagesMiddleware, isSessionValid, async function(req
     });
 });
 
+router.post('/ticket/:id', isSessionValid, async function(req, res, next) {
+    const ticket = await Persistence.getTicket(req.params.id);
+
+    if(!ticket){
+        return res.status(404).render('error', {message: `Invalid id ${req.params.id}`});
+    }
+
+    const {title, description, type, level, private} = req.body;
+
+    const data = {
+        title: req.body.title,
+        description: req.body.description,
+        type: req.body.type,
+        level: req.body.level,
+        private: req.body.private === 'true'
+    };
+
+    try {
+        await Persistence.editTicket(req.params.id, data);
+    } catch (e) {
+        logger.error(`Failed to save ticket data for ${req.params.id}`);
+        console.log(data);
+    }
+    res.redirect('/ticket/' + req.params.id);
+});
+
 router.put('/ticket/:id', messagesMiddleware, isAdmin, async function(req, res, next) {
     await Persistence.setTicketStatus(req.params.id, req.body.status);
     res.sendStatus(200);

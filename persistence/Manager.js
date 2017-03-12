@@ -55,6 +55,10 @@ module.exports = {
         return this.getDB().setTicketStatus(id, status);
     },
 
+    editTicket: function(id, data) {
+        return this.getDB().editTicket(id, data);
+    },
+
     addComment: function(id, user, comment) {
         return this.getDB().addComment(id, user, comment);
     },

@@ -203,6 +203,21 @@
     "label_no_tickets": {
         "message": "No hay tickets para mostrar"
     },
+    "label_logout": {
+        "message": "Cerrar sesión"
+    },
+    "label_edit": {
+        "message": "Editar"
+    },
+    "label_edit_ticket": {
+        "message": "Editar ticket"
+    },
+    "label_save": {
+        "message": "Guardar cambios"
+    },
+    "label_level": {
+        "message": "Prioridad"
+    },
     "xxxx": {
         "message": "xxxx"
     }

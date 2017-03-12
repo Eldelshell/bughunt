@@ -81,6 +81,10 @@ class LowDB {
         return ticket;
     }
 
+    editTicket(id, data) {
+        return this._db.get('tickets').find({id: id}).assign(data).write();
+    }
+
     async setTicketStatus(id, status) {
         if(['private', 'public'].includes(status)){
             await this._db.get('tickets').find({id: id}).assign({private: (status === 'private')}).write();
