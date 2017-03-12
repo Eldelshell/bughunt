@@ -3,7 +3,8 @@
         "path": "/tmp/jnj.json"
     },
     "ui": {
-        "pageSize": 5
+        "pageSize": 5,
+        "template": "template_bdd"
     },
     "security": {
         "sessionSecret": "c7c15976d2472c84bf5a58ab8b4202d2af2b",

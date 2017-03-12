@@ -49,6 +49,10 @@ class Manager {
         return this._config.security.anonymousTickets;
     }
 
+    getTemplateFile() {
+        return this._config.ui.template;
+    }
+
 }
 
 Manager.of();

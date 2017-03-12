@@ -3,6 +3,7 @@ const parser = require('accept-language-parser');
 const _ = require('lodash');
 const fs = require('fs');
 const Moment = require('moment');
+const Config = require('../config/Manager');
 
 const regExp = new RegExp(/\$\$(.*?)\$\$/);
 
@@ -266,7 +267,7 @@ class Messages {
      * @param {Object} req - Request object.
      * @returns {Promise<String>} the promise of a text from a template file.
      */
-    static getTemplate(req) {
+    static getTemplate(req, type) {
         return new Promise((resolve, reject) => {
             const self = Messages.of();
             let lang = self._parseLanguageHeader(req);
@@ -284,12 +285,15 @@ class Messages {
                 return;
             }
 
-            logger.info(`Reading template from _locales/${lang}/template.md for the first time.`);
-            fs.readFile(`./_locales/${lang}/template.md`, 'utf-8', function(err, data){
+            const fileName = Config.of().getTemplateFile();
+            const file = `./_locales/${lang}/${fileName}.md`;
+            logger.info(`Reading template from ${file} for the first time.`);
+            fs.readFile(file, 'utf-8', function(err, data){
                 if(err){
                     return reject();
                 }
-                self.translations.find((t) => t.lang === lang).template = data;
+                // Disable template caching
+                // self.translations.find((t) => t.lang === lang).template = data;
                 resolve(data);
             });
         });
