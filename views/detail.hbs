@@ -44,6 +44,16 @@
     {{/each}}
 {{/if}}
 
+<form class="form" method="POST" action="/ticket/{{ticket.id}}/comment">
+    <div class="form-group">
+        <label for="comment">$$label_comment$$ (min: 10/ max: 1000)</label>
+        <textarea class="form-control" rows="5" name="comment" minlength="10" maxlength="1000"></textarea>
+        <span class="markdown-notice">$$label_markdown_support$$</span>
+    </div>
+
+    <input class="btn btn-sm btn-primary long-button" type="submit" value="$$label_add_comment$$">
+</form>
+
 {{#if isAdmin}}
     {{> ticket/edit_modal this}}
 {{/if}}
