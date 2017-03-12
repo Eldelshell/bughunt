@@ -19,11 +19,17 @@ router.get('/', messagesMiddleware, function(req, res, next) {
     res.render('index');
 });
 
-router.get('/bug', messagesMiddleware, async function(req, res, next) {
+router.get('/bug', isSessionValid, messagesMiddleware, async function(req, res, next) {
+
+    if(!Config.of().allowAnonymousTickets() && !req.params.email){
+        logger.info(`Anonymous tickets are disabled`);
+        res.redirect('/login');
+        return;
+    }
+
     const {appId, appVersion, errors} = req.query;
     const template = await Messages.getTemplate(req);
     res.render('ticket', {appId: '1ae9b29e292058c9058e489b', appVersion: '1.0.0', errors: errors, template: template});
-
 });
 
 router.post('/bug', messagesMiddleware, async function(req, res, next) {
@@ -39,9 +45,8 @@ router.post('/bug', messagesMiddleware, async function(req, res, next) {
         return res.redirect(`/bug?errors=error_invalid_app`);
     }
 
-
     try {
-        logger.debug(`[index] Create new report with ${req.body.title}`);
+        logger.debug(`[index] Create new ticket with ${req.body.title}`);
         const ticket = await Persistence.createTicket(req.body);
         res.render('greeting', {name: app.name, ticket: ticket});
     } catch (e) {

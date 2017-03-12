@@ -45,6 +45,10 @@ class Manager {
         return this._config.security.sessionSecret;
     }
 
+    allowAnonymousTickets() {
+        return this._config.security.anonymousTickets;
+    }
+
 }
 
 Manager.of();
