@@ -127,7 +127,7 @@ Modify the files under zh with the new translations and restart the server.
 You can customize the following parts so they match your branding requirements:
 
 1. Bootstrap theme (with Bootswatch)
-2. Two logos
+2. One 512x100 logo
 3. Favicon
 4. Translation files
 
