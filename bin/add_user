@@ -1,4 +1,28 @@
 #!/usr/bin/env node
+const fs = require('fs');
 const Authentication = require('../utils/Authentication');
 const authentication = new Authentication();
-console.log(authentication.hash(process.argv[2]));
+
+// Obtain params from CLI
+const username = process.argv[2];
+const password = process.argv[3];
+
+// Read the configuration file
+const config = require('../config/config.json');
+
+const current = config.users.find((user) => user.email === username);
+
+if(current){
+    console.log(`User ${username} already exists. Resetting password.`);
+    current.password = authentication.hash(password);
+}else{
+    console.log(`Adding new user ${username}`);
+    config.users.push({
+        email: username,
+        password: authentication.hash(password)
+    });
+}
+
+// Save the file
+fs.writeFileSync('./config/config.json', JSON.stringify(config, null, 4), 'utf8');
+console.log('All changes applied');
