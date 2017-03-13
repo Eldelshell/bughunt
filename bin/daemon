@@ -1,0 +1,9 @@
+#!/bash/bin
+
+readonly PORT="4000"
+readonly FOREVER_PATH="/usr/bin/forever"
+readonly JNJ_PATH="/opt/jnj"
+readonly PID_FILE="${JNJ_PATH}/jnj-01.pid"
+readonly START_FILE="${JNJ_PATH}/bin/www"
+
+PORT=${PORT} NODE_ENV="production" ${FOREVER_PATH} start --pidFile ${PID_FILE} ${START_FILE}
