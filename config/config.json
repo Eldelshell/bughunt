@@ -8,6 +8,7 @@
         "template": "template_bdd"
     },
     "security": {
+        "cookieName": "jnjSession",
         "sessionSecret": "c7c15976d2472c84bf5a58ab8b4202d2af2b",
         "anonymousTickets": true
     },

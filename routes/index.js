@@ -8,7 +8,7 @@ const Config = require('../config/Manager');
 const Messages = require('../utils/Messages');
 const Authentication = require('../utils/Authentication');
 
-const cookie = 'jnjSession';
+const cookie = Config.of().getCookieName();
 const authentication = new Authentication();
 const messagesMiddleware = Middleware.messages;
 const isAdmin = Middleware.isAdmin;

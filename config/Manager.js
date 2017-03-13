@@ -57,6 +57,10 @@ class Manager {
         return this._config.ui.theme;
     }
 
+    getCookieName() {
+        return this._config.security.cookieName;
+    }
+
 }
 
 Manager.of();
