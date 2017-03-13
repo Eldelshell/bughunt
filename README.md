@@ -130,3 +130,8 @@ You can customize the following parts so they match your branding requirements:
 2. Two logos
 3. Favicon
 4. Translation files
+
+### Bootstrap theme (with Bootswatch)
+
+You can use any Bootswatch theme found on [Bootstrap CDN](https://www.bootstrapcdn.com/bootswatch/). Simply set the
+name of the theme you want to use on the `config/config.json` file.

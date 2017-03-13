@@ -53,6 +53,10 @@ class Manager {
         return this._config.ui.template;
     }
 
+    getTheme() {
+        return this._config.ui.theme;
+    }
+
 }
 
 Manager.of();

@@ -3,6 +3,7 @@
         "path": "/tmp/jnj.json"
     },
     "ui": {
+        "theme": "superhero",
         "pageSize": 5,
         "template": "template_bdd"
     },

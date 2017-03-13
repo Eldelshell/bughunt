@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
+const Config = require('./config/Manager');
 
 const app = express();
 
@@ -23,7 +24,7 @@ hbs.registerHelper ('truncate', function(str, len) {
     neu = str.substr(0, len);
     neu = str.substr(0, neu.lastIndexOf(' '));
     neu = (neu.length > 0) ? neu : str.substr(0, len);
-    return new hbs.SafeString ( neu +'...' );
+    return new hbs.SafeString(`${neu}...`);
 });
 
 const paginate = require('handlebars-paginate');
@@ -61,6 +62,11 @@ hbs.registerHelper('compare', function(lvalue, rvalue, options) {
     } else {
         return options.inverse(this);
     }
+});
+
+// Helper for global objects
+hbs.registerHelper('theme', function(options) {
+    return new hbs.SafeString(Config.of().getTheme());
 });
 
 // view engine setup
