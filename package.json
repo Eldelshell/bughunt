@@ -1,6 +1,6 @@
 {
   "name": "bughunt",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "node ./bin/www",
     "debug": "NODE_ENV=\"development\" nodemon --harmony-async-await --debug-brk ./bin/www",
