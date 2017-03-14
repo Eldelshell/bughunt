@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+const Authentication = require('../utils/Authentication');
+const authentication = new Authentication();
+
+// Obtain params from CLI
+const username = process.argv[2];
+console.log(authentication.hash(process.argv[2]));
