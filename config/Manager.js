@@ -61,6 +61,14 @@ class Manager {
         return this._config.security.cookieName;
     }
 
+    isAPIEnabled() {
+        return this._config.api.enabled;
+    }
+
+    getAPISecret() {
+        return this._config.api.secret;
+    }
+
 }
 
 Manager.of();

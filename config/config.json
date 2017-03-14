@@ -12,6 +12,11 @@
         "sessionSecret": "c7c15976d2472c84bf5a58ab8b4202d2af2b",
         "anonymousTickets": true
     },
+    "api": {
+        "enabled": true,
+        "secret": "2d9e8e7d2fb363e2a10a63f539e043c4",
+        "public": "QofJGin1w4QPvamjU/V3vZid8BabRmC0nQwQtGEgjGc="
+    },
     "apps": [
         {
             "id": "1ae9b29e292058c9058e489b",

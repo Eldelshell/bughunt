@@ -235,4 +235,58 @@ router.delete('/ticket/:id/comment/:cid', isAdmin, async function(req, res, next
     res.sendStatus(200);
 });
 
+/**
+ * POST receiver for /api/bug API to create a new ticket.
+ * @param {String} appId - the ID of the app
+ * @param {String} appVersion - the version of the app
+ * @param {String} [email] - the email of the user
+ * @param {String} title - the title of the ticket
+ * @param {String} description - the description of the ticket
+ * @param {String} type - the type of ticket
+ * @param {String} token - a 256 hash of the secret token
+ * @throws 500 if the API is disabled
+ * @throws 401 if the token is not valid
+ * @throws 404 if the appId is not valid
+ * @throws 404 if the appVersion is not valid
+ * @returns 200 if the ticket was created
+ */
+router.post('/api/bug', messagesMiddleware, async function(req, res, next) {
+    if(!Config.of().isAPIEnabled()){
+        logger.debug('API is disabled');
+        return res.sendStatus(404);
+    }
+
+    const {appId, appVersion, email, title, description, type, token} = req.body;
+
+    if(authentication.hash(Config.of().getAPISecret()) !== token){
+        logger.debug('Invalid API token');
+        return res.sendStatus(401);
+    }
+
+    if(_.isEmpty(appId)){
+        logger.debug('Invalid appId');
+        return res.sendStatus(400);
+    }
+
+    if(_.isEmpty(appVersion)){
+        logger.debug('Invalid appVersion');
+        return res.sendStatus(400);
+    }
+
+    const app = await Persistence.getApp(appId);
+
+    if(!app){
+        logger.debug('Invalid appId');
+        return res.sendStatus(400);
+    }
+
+    try {
+        logger.debug(`[API] Create new ticket with ${req.body.title}`);
+        const ticket = await Persistence.createTicket(req.body);
+        return res.sendStatus(200);
+    } catch (e) {
+        next(e);
+    }
+});
+
 module.exports = router;
