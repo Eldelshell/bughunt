@@ -125,6 +125,7 @@ router.get('/ticket/:id', messagesMiddleware, isSessionValid, async function(req
         email: req.params.email,
         isAdmin: !_.isEmpty(req.params.email),
         appName: app.name,
+        versions: app.versions,
         ticket: ticket
     });
 });
