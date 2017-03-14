@@ -15,10 +15,16 @@ const isAdmin = Middleware.isAdmin;
 const isSessionValid = Middleware.isSessionValid;
 const isSessionPresent = Middleware.isSessionPresent;
 
+/**
+ * Render the home page
+ */
 router.get('/', messagesMiddleware, function(req, res, next) {
     res.render('index');
 });
 
+/**
+ * Render the form for users to create a new ticket
+ */
 router.get('/bug', isSessionValid, messagesMiddleware, async function(req, res, next) {
 
     if(!Config.of().allowAnonymousTickets() && !req.params.email){
@@ -41,6 +47,15 @@ router.get('/bug', isSessionValid, messagesMiddleware, async function(req, res, 
     res.render('ticket', data);
 });
 
+/**
+ * POST receiver for /bug form to create a new ticket.
+ * @param {String} appId - the ID of the app
+ * @param {String} appVersion - the version of the app
+ * @param {String} [email] - the email of the user
+ * @param {String} title - the title of the ticket
+ * @param {String} description - the description of the ticket
+ * @param {String} type - the type of ticket
+ */
 router.post('/bug', messagesMiddleware, async function(req, res, next) {
     const {appId, appVersion, email, title, description, type} = req.body;
 
@@ -67,10 +82,18 @@ router.post('/bug', messagesMiddleware, async function(req, res, next) {
     }
 });
 
+/**
+ * Render the login page
+ */
 router.get('/login', messagesMiddleware, isSessionPresent, function(req, res, next) {
     res.render('login');
 });
 
+/**
+ * POST receiver for the login form
+ * @param {String} email - the email of the user
+ * @param {String} password - the password of the user
+ */
 router.post('/login', async function(req, res, next) {
     const {email, password} = req.body;
     const pwd = authentication.hash(password);
@@ -88,10 +111,18 @@ router.post('/login', async function(req, res, next) {
     res.redirect('/dashboard');
 });
 
+/**
+ * Logout the user
+ */
 router.get('/logout', function(req, res, next) {
     res.clearCookie(cookie).redirect('/');
 });
 
+/**
+ * Renders the dashboard
+ * @param {String} [search] - the search string
+ * @param {String} [page] - the page to display
+ */
 router.get('/dashboard', messagesMiddleware, isAdmin, async function(req, res, next) {
     const tickets = await Persistence.getTickets(req.query.search);
     const stats = await Persistence.getStats();
@@ -113,11 +144,15 @@ router.get('/dashboard', messagesMiddleware, isAdmin, async function(req, res, n
     });
 });
 
+/**
+ * Renders the details page of a ticket
+ * @param {String} id - the ID of the ticket
+ */
 router.get('/ticket/:id', messagesMiddleware, isSessionValid, async function(req, res, next) {
     const ticket = await Persistence.getTicket(req.params.id);
 
     if(!ticket){
-        return res.status(404).render('error', {message: `Invalid id ${req.params.id}`});
+        return res.status(404).render('error', {status: 404, message: `Invalid id ${req.params.id}`});
     }
 
     const app = await Persistence.getApp(ticket.appId, ticket.appVersion);
@@ -130,6 +165,16 @@ router.get('/ticket/:id', messagesMiddleware, isSessionValid, async function(req
     });
 });
 
+/**
+ * POST receiver for /ticket modal form to edit a ticket.
+ * @param {String} id - the ID of the ticket
+ * @param {String} appVersion - the version of the app
+ * @param {String} title - the title of the ticket
+ * @param {String} description - the description of the ticket
+ * @param {String} type - the type of ticket
+ * @param {String} level - the level of the ticket
+ * @param {String} private - the privacy of the ticket
+ */
 router.post('/ticket/:id', isSessionValid, async function(req, res, next) {
     const ticket = await Persistence.getTicket(req.params.id);
 
@@ -142,6 +187,7 @@ router.post('/ticket/:id', isSessionValid, async function(req, res, next) {
     const data = {
         title: req.body.title,
         description: req.body.description,
+        appVersion: req.body.appVersion,
         type: req.body.type,
         level: req.body.level,
         private: req.body.private === 'true'
@@ -156,17 +202,33 @@ router.post('/ticket/:id', isSessionValid, async function(req, res, next) {
     res.redirect('/ticket/' + req.params.id);
 });
 
+/**
+ * PUT receiver for a ticket. Allows to edit the type, level or status of a ticket without a form (with AJAX)
+ * @param {String} id - the ID of the ticket
+ * @param {String} status - the new status to set
+ */
 router.put('/ticket/:id', messagesMiddleware, isAdmin, async function(req, res, next) {
     await Persistence.setTicketStatus(req.params.id, req.body.status);
     res.sendStatus(200);
 });
 
+/**
+ * POST receiver to add a new comment to a ticket
+ * @param {String} id - the ID of the ticket
+ * @param {String} [email] - the email of the user adding the comment
+ * @param {String} comment - the new comment
+ */
 router.post('/ticket/:id/comment', isSessionValid, async function(req, res, next) {
     const { id, email } = req.params;
     await Persistence.addComment(id, email, req.body.comment);
     res.redirect('/ticket/' + id);
 });
 
+/**
+ * DELETE receiver to delete a comment from a ticket
+ * @param {String} id - the ID of the ticket
+ * @param {String} cid - the ID of the comment
+ */
 router.delete('/ticket/:id/comment/:cid', isAdmin, async function(req, res, next) {
     const { id, cid } = req.params;
     await Persistence.deleteComment(id, cid);
