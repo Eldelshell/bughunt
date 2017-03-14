@@ -1,5 +1,12 @@
-<h1>{{message}}</h1>
+{{#compare status 404}}
+    <div style="text-align: center;">
+        <h1><i class="fa fa-fort-awesome fa-4x"></i></h1>
+        <h1>This ticket is in another castle.</h1>
+    </div>
+{{/compare}}
+
 {{#if error}}
+    <p>{{message}}</p>
     <h2>{{error.status}}</h2>
     <pre>{{error.stack}}</pre>
 {{/if}}
