@@ -32,11 +32,13 @@
     margin-right: 3px
 
 .toolbar .btn-group
-    width: 100%
+    display: flex
+
+    @media (max-width: 767px)
+        flex-direction: column
 
 .toolbar .btn
-    width: 25%
-    margin-left: 0 !important
+    flex: 1
 
 .long-button
     width: 100%
