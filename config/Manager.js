@@ -29,10 +29,10 @@ class Manager {
         });
     }
 
-    getApp(id, version){
+    getApp(id){
         // For now, since we don't have a DB for this, we use the configuration.
         return new Promise((resolve, reject) => {
-            const app = this._config.apps.find((el) => el.id === id && el.version === version);
+            const app = this._config.apps.find((el) => el.id === id);
             resolve(app);
         });
     }

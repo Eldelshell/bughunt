@@ -29,17 +29,30 @@ router.get('/bug', isSessionValid, messagesMiddleware, async function(req, res, 
 
     const {appId, appVersion, errors} = req.query;
     const template = await Messages.getTemplate(req);
-    res.render('ticket', {appId: '1ae9b29e292058c9058e489b', appVersion: '1.0.0', errors: errors, template: template});
+    const app = await Persistence.getApp(appId);
+
+    const data = {
+        appVersion: appVersion,
+        versions: app.versions,
+        errors: errors ? errors.split(',') : null,
+        template: template
+    };
+
+    res.render('ticket', data);
 });
 
 router.post('/bug', messagesMiddleware, async function(req, res, next) {
     const {appId, appVersion, email, title, description, type} = req.body;
 
-    if(_.isEmpty(appId) || _.isEmpty(appVersion)){
+    if(_.isEmpty(appId)){
         return res.redirect(`/bug?errors=error_invalid_app`);
     }
 
-    const app = await Persistence.getApp(appId, appVersion);
+    if(_.isEmpty(appVersion)){
+        return res.redirect(`/bug?errors=error_invalid_version`);
+    }
+
+    const app = await Persistence.getApp(appId);
 
     if(!app){
         return res.redirect(`/bug?errors=error_invalid_app`);

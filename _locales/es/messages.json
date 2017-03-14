@@ -57,7 +57,7 @@
         "message": "success"
     },
     "icon_type_idea": {
-        "message": "fa-info-circle"
+        "message": "fa-lightbulb-o"
     },
     "icon_type_bug": {
         "message": "fa-bug"
@@ -217,6 +217,36 @@
     },
     "label_level": {
         "message": "Prioridad"
+    },
+    "home_welcome": {
+        "message": "Bienvenido al BugHunt de"
+    },
+    "home_open_ticket": {
+        "message": "Abrir un ticket"
+    },
+    "home_open_admin": {
+        "message": "Abrir consola de administración"
+    },
+    "home_1": {
+        "message": "Puede enviar a los desarrolladores de la aplicación cualquiera de estos tipos de tickets"
+    },
+    "home_2": {
+        "message": "Totalmente anonimo, y sin necesidad de introducir su correo electrónico o de registrarse"
+    },
+    "home_idea": {
+        "message": "Una idea (me gustaría filtrar por nombres)"
+    },
+    "home_improvement": {
+        "message": "Una mejora (sería mejor si el título fuera más pequeño)"
+    },
+    "home_problem": {
+        "message": "Un problema (las contraseñas son visibles)"
+    },
+    "home_bug": {
+        "message": "Un error (se cuelga cuando no hay conexión)"
+    },
+    "error_invalid_app": {
+        "message": "La aplicación es invalida. Solo puede abrir tickets con el ID de applicación correcto."
     },
     "xxxx": {
         "message": "xxxx"

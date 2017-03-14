@@ -15,8 +15,10 @@
     "apps": [
         {
             "id": "1ae9b29e292058c9058e489b",
-            "name": "My App Name",
-            "version": "1.0.0"
+            "name": "BugHunt",
+            "versions": [
+                "0.0.1"
+            ]
         }
     ],
     "users": [

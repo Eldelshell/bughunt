@@ -57,7 +57,7 @@
         "message": "success"
     },
     "icon_type_idea": {
-        "message": "fa-info-circle"
+        "message": "fa-lightbulb-o"
     },
     "icon_type_bug": {
         "message": "fa-bug"

@@ -31,10 +31,10 @@ module.exports = {
         return this.getDB().createTicket(data);
     },
 
-    getApp: function(id, version){
+    getApp: function(id){
         // For now, since we don't have a DB for this, we use the configuration but it
         // should go to the DB in the future
-        return Config.of().getApp(id, version);
+        return Config.of().getApp(id);
     },
 
     login: function(email, password){
